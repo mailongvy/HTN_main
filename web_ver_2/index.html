@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fire System Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <main class="shell">
+    <section id="dashboard" class="dashboard-grid">
+      <header class="topbar panel">
+        <div class="topbar-main">
+          <p class="label-top">Realtime Monitor</p>
+          <h2>Fire Safety Dashboard</h2>
+          <div class="chips">
+            <span class="chip" id="userInfo">Public mode</span>
+            <span class="chip" id="updatedAt">updatedAt: 0</span>
+          </div>
+        </div>
+        <div class="topbar-side">
+          <div id="systemMode" class="status-box SAFE">SAFE</div>
+        </div>
+      </header>
+
+      <section class="panel data-panel">
+        <div class="panel-title-row">
+          <h3>Cảm biến</h3>
+        </div>
+        <div class="tiles tiles-6">
+          <article class="tile"><p class="tile-name">FIRE</p><p class="metric-value" id="fireState">SAFE</p></article>
+          <article class="tile"><p class="tile-name">FLAME AO</p><p class="metric-value" id="flameAo">0</p></article>
+          <article class="tile"><p class="tile-name">MQ2</p><p class="metric-value" id="mq2">0</p></article>
+          <article class="tile"><p class="tile-name">TEMP</p><p class="metric-value" id="temperature">0 C</p></article>
+          <article class="tile"><p class="tile-name">HUMI</p><p class="metric-value" id="humidity">0 %</p></article>
+          <article class="tile"><p class="tile-name">SERVO</p><p class="metric-value" id="servoAngle">0 deg</p></article>
+        </div>
+      </section>
+
+      <section class="panel device-panel">
+        <div class="panel-title-row">
+          <h3>Thiết bị</h3>
+        </div>
+        <div class="tiles tiles-5">
+          <article class="tile"><p class="tile-name">BUZZER</p><p class="metric-value" id="buzzer">OFF</p></article>
+          <article class="tile"><p class="tile-name">PUMP</p><p class="metric-value" id="pump">OFF</p></article>
+          <article class="tile"><p class="tile-name">RGB</p><p class="metric-value" id="rgb">OFF</p></article>
+          <article class="tile"><p class="tile-name">EMG BTN</p><p class="metric-value" id="manualBtn">OFF</p></article>
+          <article class="tile"><p class="tile-name">RST BTN</p><p class="metric-value" id="resetBtn">OFF</p></article>
+        </div>
+      </section>
+
+      <section class="panel control-panel">
+        <div class="panel-title-row">
+          <h3>Điều khiển nhanh</h3>
+        </div>
+        <div class="control-columns">
+          <div class="control-block">
+            <p class="control-title">Pump</p>
+            <button class="btn btn-success" id="pumpOnBtn">Bật bơm</button>
+            <button class="btn btn-neutral" id="pumpOffBtn">Tắt bơm</button>
+          </div>
+          <div class="control-block">
+            <p class="control-title">Buzzer</p>
+            <button class="btn btn-danger" id="buzzerOnBtn">Bật còi</button>
+            <button class="btn btn-neutral" id="buzzerOffBtn">Tắt còi</button>
+          </div>
+          <div class="control-block">
+            <p class="control-title">Manual Alarm</p>
+            <button class="btn btn-warning" id="manualOnBtn">Manual ON</button>
+            <button class="btn btn-neutral" id="manualOffBtn">Manual OFF</button>
+          </div>
+          <div class="control-block">
+            <p class="control-title">Reset</p>
+            <button class="btn btn-primary" id="resetBtnCmd">Reset</button>
+          </div>
+        </div>
+        <p id="commandStatus" class="footer-note">Command test: chưa gửi lệnh.</p>
+        <p class="footer-note">Web ghi lệnh vào <code>commands</code>. ESP32 đọc lệnh và cập nhật trạng thái thật lên <code>state</code>.</p>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
